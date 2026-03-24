@@ -1,6 +1,5 @@
 #include "loadcell.h"
 #include <HX711_ADC.h>
-#include <EEPROM.h>
 
 // -------------------------------------------------------
 // Config
@@ -23,7 +22,6 @@ static boolean newDataReady = false;
 // Init
 // -------------------------------------------------------
 void loadcell_init() {
-  EEPROM.begin(512);
   Serial.println("Initializing load cell...");
 
   LoadCell.begin();
