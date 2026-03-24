@@ -155,19 +155,6 @@ MAX_SPEED = 112,000 / 10 = 11,200 steps/sec
 
 Increase `MAX_SPEED` slightly (10–15%) to account for the acceleration ramp if the move is taking longer than expected.
 
-### Pins
-
-Both motors share the same STEP and DIR pins:
-
-| Signal | Pin |
-|--------|-----|
-| STEP (PUL+) | GPIO 32 (D32) |
-| STEP (PUL-) | GND |
-| DIR (DIR+)  | GPIO 33 (D33) |
-| DIR (DIR-)  | GND |
-
-Both DM542 drivers receive identical signals simultaneously, ensuring perfect synchronisation.
-
 ### Independent Motor Tuning
 
 If a single motor needs to be jogged independently (e.g. to set home position), physically unplug the motor that does **not** require tuning from the breadboard, then use the `m1<steps>` command to move the connected motor only. Replug when done.
