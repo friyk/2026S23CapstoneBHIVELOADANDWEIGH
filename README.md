@@ -4,6 +4,13 @@ Part of the **B.HIVE Autonomous Luggage Concierge** system, a capstone project a
 
 This repository contains the embedded firmware for the load and weigh station — the subsystem responsible for accepting, weighing, and staging luggage for pickup by the AMR.
 
+
+
+## Related
+
+- [B.HIVE AMR](https://github.com/friyk/2026S23CapstoneBHIVEAMR) — ROS 2 software stack for the autonomous mobile robot
+
+
 ## Overview
 
 The firmware runs on a microcontroller and is built using PlatformIO. It interfaces with load cell sensors to measure luggage weight, and communicates status within the B.HIVE distributed system.
@@ -283,8 +290,4 @@ pio device monitor --baud 115200
 
 
 
-
-## Related
-
-- [B.HIVE AMR](https://github.com/friyk/2026S23CapstoneBHIVEAMR) — ROS 2 software stack for the autonomous mobile robot
 
