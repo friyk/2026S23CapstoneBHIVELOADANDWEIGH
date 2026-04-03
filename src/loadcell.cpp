@@ -94,7 +94,7 @@ void loadcell_update() {
     latestWeight = LoadCell.getData();
     float weightKg = latestWeight / 1000.0;
     Serial.print("Weight: ");
-    Serial.print(weightKg, 3);
+    Serial.print(weightKg, 1);
     Serial.println(" kg");
     newDataReady  = false;
     lastPrintTime = millis();
