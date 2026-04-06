@@ -28,7 +28,7 @@ The firmware runs on a microcontroller and is built using PlatformIO. It interfa
 
 - **Language:** C / C++
 - **Build System:** PlatformIO
-- **Hardware:** Microcontroller (MCU) with load cell interface
+- **Hardware:** Microcontroller (MCU) with load cell interface and linear actuators
 
 ---
 
@@ -48,7 +48,7 @@ The system uses the `bogde/HX711_ADC` library and is designed to run non-blockin
 - ESP32 WROOM-32 DevKit
 - HX711 ADC module
 - 4x load cells (wired in parallel summing bridge)
-- Acrylic platform mounted on top of the load cells
+- Acrylic platform with rollers mounted on top of the load cells
 
 ### Wiring
 
@@ -67,10 +67,10 @@ All four load cells are wired in parallel — all wires of the same colour are c
 
 | Wire Colour | HX711 Terminal |
 |-------------|----------------|
-| Red         | E+             |
-| Black       | E−             |
-| White       | A−             |
-| Green       | A+             |
+| Red         | Red            |
+| Black       | Black          |
+| White       | White          |
+| Green       | Green          |
 
 > **Why parallel wiring works:** The platform is a rigid body, so the four load cells always carry forces that sum to the total luggage weight regardless of where the bag sits (F1 + F2 + F3 + F4 = W, always). With four identical load cells in parallel, the HX711 reads a signal proportional to the average force across all cells — which is proportional to the total weight. Position of the luggage on the platform does not affect the reading.
 
@@ -110,15 +110,15 @@ In `CALIBRATE` mode, the cal factor is set to 1.0 (raw units) and the calibratio
 
 Calibration only needs to be done once, or when the load cells or platform are changed.
 
-1. Set `#define MODE CALIBRATE` in `loadcell.h` and re-flash
+1. Set `#define MODE CALIBRATE` in `loadcell.h`, then erase and re-flash
 2. Open serial monitor at 115200 baud
 3. Ensure platform is **empty**, send `t` to tare
 4. Enter your known weight in grams and press Enter (e.g. `20000` for 20 kg)
-5. Place the known weight anywhere on the platform
+5. Place the known weight anywhere on the platform (ideally in the center)
 6. Send `r` — the firmware waits 8 seconds for load cell creep to settle, then collects 30 samples automatically
 7. Review the printed cal factor
 8. Send `y` to save to EEPROM, or any other key to discard and repeat from step 5
-9. Set `#define MODE READ` in `loadcell.h` and re-flash
+9. Set `#define MODE READ` in `loadcell.h` and re-flash (Do not erase)
 
 > **Why the 8 second wait:** Load cell creep — the strain gauge material slowly deforms immediately after a weight is placed, causing readings to drift upward for several seconds. The delay allows the fast initial creep to pass before samples are taken, giving a stable average.
 
