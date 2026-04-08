@@ -8,7 +8,7 @@ This repository contains the embedded firmware for the load and weigh station �
 
 ## Related
 
-- [B.HIVE AMR](https://github.com/friyk/2026S23CapstoneBHIVEAMR) — ROS 2 software stack for the autonomous mobile robot
+- [B.HIVE AMR](https://github.com/friyk/2026S23CapstoneBHIVEAMR) — ROS 2 software stack for the autonomous mobile robot (functional prototype)
 
 
 ## Overview
